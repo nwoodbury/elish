@@ -2,7 +2,8 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    _ = require('underscore');
 
 /**
  * Auth callback
@@ -100,4 +101,25 @@ exports.user = function(req, res, next, id) {
             req.profile = user;
             next();
         });
+};
+
+/**
+ * List of Users
+ */
+exports.all = function(req, res) {
+    User.find().exec(function(err, users) {
+        if (err) {
+            res.render('error', {
+                status: 500
+            });
+        }
+        else {
+            reduced_users = _.map(users, function(user) {
+                return {
+                    name : user.name
+                };
+            });
+            res.jsonp(reduced_users);
+        }
+    });
 };

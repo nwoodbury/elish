@@ -14,10 +14,12 @@ module.exports = function(app, passport, auth) {
         failureRedirect: '/signin',
         failureFlash: 'Invalid email or password.'
     }), users.session);
-
+    
+    // Public User Routes
+    app.get('/users/all', users.all);
     app.get('/users/me', users.me);
     app.get('/users/:userId', users.show);
-
+    
     //Setting the facebook oauth routes
     app.get('/auth/facebook', passport.authenticate('facebook', {
         scope: ['email', 'user_about_me'],
