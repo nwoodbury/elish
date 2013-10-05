@@ -72,12 +72,7 @@ exports.create = function(req, res) {
  *  Show profile
  */
 exports.show = function(req, res) {
-    var user = req.profile;
-
-    res.render('users/show', {
-        title: user.name,
-        user: user
-    });
+    res.jsonp(public_profile(req.user));
 };
 
 /**
@@ -87,20 +82,26 @@ exports.me = function(req, res) {
     res.jsonp(req.user || null);
 };
 
+exports.profile = function(req, res) {
+    res.jsonp(req.user);
+};
+
 /**
  * Find user by id
  */
+
 exports.user = function(req, res, next, id) {
-    User
-        .findOne({
-            _id: id
-        })
-        .exec(function(err, user) {
-            if (err) return next(err);
-            if (!user) return next(new Error('Failed to load User ' + id));
-            req.profile = user;
-            next();
-        });
+    console.log('reached');
+    User.load(id, function(err, user) {
+        if (err) return next(err);
+        console.log('pre');
+        console.log(user);
+        console.log('post');
+        if (!user) return next(new Error('Failed to load user ' + id));
+        req.user = user;
+        next();
+    });
+
 };
 
 /**
@@ -114,12 +115,28 @@ exports.all = function(req, res) {
             });
         }
         else {
-            reduced_users = _.map(users, function(user) {
-                return {
-                    name : user.name
-                };
-            });
-            res.jsonp(reduced_users);
+            res.jsonp(public_profiles(users));
         }
     });
 };
+
+exports.update = function(req, res) {
+    var user = req.user;
+
+    user = _.extend(user, req.body);
+
+    user.save(function(err) {
+        res.jsonp(user);
+    });
+};
+
+function public_profiles(users) {
+    return _.map(users, public_profile);
+}
+
+function public_profile(user) {
+    return {
+        id : user.id,
+        username : user.username
+    };
+}

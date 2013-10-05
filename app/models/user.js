@@ -35,6 +35,14 @@ UserSchema.virtual('password').set(function(password) {
     return this._password;
 });
 
+UserSchema.statics = {
+    load: function(id, cb) {
+        this.findOne({
+            _id: id
+        }).exec(cb);
+    }
+};
+
 /**
  * Validations
  */
