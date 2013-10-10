@@ -5,6 +5,8 @@ module.exports = function(app, passport, auth) {
     //=========================================================================
     // Users
     //=========================================================================
+    
+    console.log(auth)
 
     //User Routes
     var users = require('../app/controllers/users');
@@ -99,7 +101,8 @@ module.exports = function(app, passport, auth) {
     var singledocs = require('../app/controllers/singledocs');
     app.get('/docs', singledocs.all);
     app.post('/docs', auth.requiresLogin, singledocs.create);
-    app.get('/docs/:singledocId', singledocs.show);
+    app.get('/docs/:singledocId', auth.requiresLogin, 
+            auth.singledoc.hasAuthorization, singledocs.show);
     app.put('/docs/:singledocId', auth.requiresLogin,
             auth.singledoc.hasAuthorization, singledocs.update);
     app.del('/docs/:singledocId', auth.requiresLogin,

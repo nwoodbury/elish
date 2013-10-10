@@ -2,6 +2,7 @@
  * Generic require login routing middleware
  */
 exports.requiresLogin = function(req, res, next) {
+    //console.log('exports.requiresLogin');
     if (!req.isAuthenticated()) {
         return res.send(401, 'User is not authorized');
     }
@@ -13,6 +14,7 @@ exports.requiresLogin = function(req, res, next) {
  */
 exports.user = {
     hasAuthorization: function(req, res, next) {
+        //console.log('exports.user.requiresLogin');
         if (req.profile.id != req.user.id) {
             return res.send(401, 'User is not authorized');
         }
@@ -25,6 +27,7 @@ exports.user = {
  */
 exports.article = {
     hasAuthorization: function(req, res, next) {
+        //console.log('exports.article.hasAuthorization');
         if (req.article.user.id != req.user.id) {
             return res.send(401, 'User is not authorized');
         }
@@ -37,6 +40,7 @@ exports.article = {
  */
 exports.singledoc = {
     hasAuthorization: function(req, res, next) {
+        //console.log('exports.singledoc.hasAuthorization');
         if (req.singledoc.user.id != req.user.id) {
             return res.send(401, 'User is not authorized');
         }

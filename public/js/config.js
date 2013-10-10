@@ -23,8 +23,17 @@ window.app.config(['$routeProvider',
         when('/users/:userId', {
             templateUrl: 'views/users/view.html'
         }).
-        when('/test', {
-            templateUrl: 'views/test.html'
+        when('/docs', {
+            templateUrl: 'views/singledocs/list.html'
+        }).
+        when('/docs/create', {
+            templateUrl: 'views/singledocs/create.html'
+        }).
+        when('/docs/:singledocId/edit', {
+            templateUrl: 'views/singledocs/edit.html'
+        }).
+        when('/docs/:singledocId', {
+            templateUrl: 'views/singledocs/view.html'
         }).
         when('/', {
             templateUrl: 'views/index.html'
