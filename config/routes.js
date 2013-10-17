@@ -6,8 +6,6 @@ module.exports = function(app, passport, auth) {
     // Users
     //=========================================================================
     
-    console.log(auth)
-
     //User Routes
     var users = require('../app/controllers/users');
     app.get('/signin', users.signin);

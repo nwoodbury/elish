@@ -16,4 +16,3 @@ angular.module('elish.users').factory("Users",
             }
         });
     }]);
-

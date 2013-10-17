@@ -4,10 +4,10 @@ angular.module('elish.system').controller('HeaderController',
         $scope.global = Global;
 
         $scope.menu = [{
-            "title": "Articles",
-            "link": "articles"
+            "title": "Documents",
+            "link": "docs"
         }, {
-            "title": "Create New Article",
-            "link": "articles/create"
+            "title": "Create a New Document",
+            "link": "docs/create"
         }];
     }]);

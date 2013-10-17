@@ -1,7 +1,10 @@
 <div class="navbar-inner" data-ng-controller="HeaderController">
     <ul class="nav">
         <li>
-            <a class="brand" href="/">Elish</a>
+            <a class="brand" href="/">
+                <img id='header-logo' src='img/icons/elish.png' />
+                Elish - Write, Share, Revise
+            </a>
         </li>
         <li data-ng-repeat="item in menu" data-ng-show="global.user" 
             ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">

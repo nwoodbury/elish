@@ -1,0 +1,15 @@
+<section data-ng-controller='SingledocsController' data-ng-init='find()'>
+    <ul class='singledocs unstyled'>
+        <li data-ng-repeat='doc in singledocs'>
+            <span>{{doc.created | date:'medium'}}</span> /
+            <span>{{doc.user.username}}</span>
+            <h2>
+                <a data-ng-href='#!/docs/{{doc._id}}'>{{doc.title}}</a>
+            </h2>
+        </li>
+    </ul>
+    <h1 data-ng-hide='!singledocs || singledocs.length'>
+        No documents yet. <br />
+        <a href='/#!/docs/create'>Create One Now</a>
+    </h1>
+</section>

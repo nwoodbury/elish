@@ -120,6 +120,9 @@ exports.all = function(req, res) {
     });
 };
 
+/**
+ * Updates the user's profile
+ */
 exports.update = function(req, res) {
     var user = req.user;
 

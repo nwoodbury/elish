@@ -1,0 +1,8 @@
+<section data-ng-controller='SingledocsController' data-ng-init='findOne()'>
+    <span>{{singledoc.created | date:'medium'}}</span> /
+    <span>{{singledoc.user.username}}</span>
+    <h2>{{singledoc.title}}
+        <a data-ng-show='global.user._id == singledoc.user._id'
+            href='/#!/docs/{{singledoc._id}}/edit'>edit</a>
+    </h2>
+</section>
