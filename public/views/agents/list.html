@@ -1,5 +1,26 @@
 <section ng-controller='AgentsController' ng-init='find()'>
     <h1>Registered Agents</h1>
 
-    <div></div>
+    <div class='panel panel-default' ng-repeat='agent in agents'>
+        <div class='panel-heading'>
+            <b>{{agent.name}}</b>
+
+            <div class='btn-group pull-right'>
+                <a class='btn btn-primary'
+                    href='/#!/agents/{{agent.id}}'>
+                    Details
+                </a>
+                <a class='btn btn-default'
+                    href='/#!/agents/{{agent.id}}/edit'>
+                    Edit
+                </a>
+            </div>
+            <div class='clearfix'></div>
+        </div>
+        <div class='panel-body'>
+            {{agent}}
+        </div>
+    </div>
+
+    <a class='btn btn-default' href='/#!/agents/create'>Add an Agent</a>
 </section>

@@ -1,5 +1,5 @@
 angular.module('elish.agents').controller('AgentsController',
-    ['$scope', '$routeParams', '$locaton', 'Global', 'Agents',
+    ['$scope', '$routeParams', '$location', 'Global', 'Agents',
     function ($scope, $routeParams, $location, Global, Agents) {
         $scope.global = Global;
 
