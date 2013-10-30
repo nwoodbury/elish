@@ -7,5 +7,5 @@ angular.module('elish').directive('editor',
             scope: {
                 content: '='
             }
-        }
+        };
     }]);
