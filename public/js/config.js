@@ -2,6 +2,11 @@
 window.app.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
+
+        //=====================================================================
+        //  Articles
+        //=====================================================================
+
         when('/articles', {
             templateUrl: 'views/articles/list.html'
         }).
@@ -14,6 +19,12 @@ window.app.config(['$routeProvider',
         when('/articles/:articleId', {
             templateUrl: 'views/articles/view.html'
         }).
+
+
+        //=====================================================================
+        //  Users
+        //=====================================================================
+
         when('/users', {
             templateUrl: 'views/users/list.html'
         }).
@@ -23,6 +34,11 @@ window.app.config(['$routeProvider',
         when('/users/:userId', {
             templateUrl: 'views/users/view.html'
         }).
+
+        //=====================================================================
+        //  Docs
+        //=====================================================================
+
         when('/docs', {
             templateUrl: 'views/singledocs/list.html'
         }).
@@ -35,6 +51,28 @@ window.app.config(['$routeProvider',
         when('/docs/:singledocId', {
             templateUrl: 'views/singledocs/view.html'
         }).
+
+        //=====================================================================
+        //  Agents
+        //=====================================================================
+
+        when('/agents', {
+            templateUrl: 'views/agents/list.html'
+        }).
+        when('/agents/create', {
+            templateUrl: 'views/agents/create.html'
+        }).
+        when('/agents/:agentId/edit', {
+            templateUrl: 'views/agents/edit.html'
+        }).
+        when('/agents/:agentId', {
+            templateUrl: 'views/agents/view.html'
+        }).
+
+        //=====================================================================
+        //  Main
+        //=====================================================================
+
         when('/', {
             templateUrl: 'views/index.html'
         }).
@@ -47,6 +85,6 @@ window.app.config(['$routeProvider',
 //Setting HTML5 Location Mode
 window.app.config(['$locationProvider',
     function($locationProvider) {
-        $locationProvider.hashPrefix("!");
+        $locationProvider.hashPrefix('!');
     }
 ]);
