@@ -86,5 +86,12 @@ var AgentSchema = new Schema({
 //  Statics
 //=============================================================================
 
+AgentSchema.statics = {
+    load: function(id, cb) {
+        this.findOne({
+            _id: id
+        }).exec(cb);
+    }
+};
 
 mongoose.model('Agent', AgentSchema);

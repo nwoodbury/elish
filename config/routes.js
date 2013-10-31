@@ -119,7 +119,7 @@ module.exports = function(app, passport, auth) {
     app.del('/agents/:agentId', auth.requiresLogin, agents.destroy);
 
     // Finish with setting up the singledocId param
-    app.param('agentId', singledocs.singledoc);
+    app.param('agentId', agents.agent);
 
 
     //=========================================================================
@@ -129,5 +129,4 @@ module.exports = function(app, passport, auth) {
     //Home route
     var index = require('../app/controllers/index');
     app.get('/', index.render);
-
 };

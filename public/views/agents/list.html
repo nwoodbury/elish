@@ -6,13 +6,17 @@
             <b>{{agent.name}}</b>
 
             <div class='btn-group pull-right'>
-                <a class='btn btn-primary'
-                    href='/#!/agents/{{agent.id}}'>
+                <a class='btn btn-default'
+                    href='/#!/agents/{{agent._id}}'>
                     Details
                 </a>
-                <a class='btn btn-default'
-                    href='/#!/agents/{{agent.id}}/edit'>
+                <a class='btn btn-warning'
+                    href='/#!/agents/{{agent._id}}/edit'>
                     Edit
+                </a>
+                <a class='btn btn-danger'
+                    ng-click='remove(agent)'>
+                    Delete
                 </a>
             </div>
             <div class='clearfix'></div>

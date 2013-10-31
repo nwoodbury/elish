@@ -25,6 +25,8 @@ angular.module('elish.agents').controller('AgentsController',
                     $scope.agents.splice(i, 1);
                 }
             }
+
+            $location.path('agents/');
         };
 
         $scope.update = function() {
